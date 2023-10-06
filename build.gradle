@@ -1,0 +1,26 @@
+plugins {
+    id "com.github.node-gradle.node" version "7.0.0"
+}
+
+tasks.register("welcome"){
+    doLast {
+        println("Welcome to Gradle")
+    }
+}
+
+task docsGeneration(type:Exec){
+    workingDir "${project.projectDir}"
+    commandLine 'cmd', '/c', 'jsdoc -r src'
+    doLast {
+        println "Doc Generated"
+    }
+}
+
+task initialiseConnections
+initialiseConnections << { println
+    'connecting' }
+initialiseConnections {
+    description="Connections"
+    group="GI"
+    println "configuring connections"
+}
